@@ -161,6 +161,3 @@ export function withErrorBoundary(WrappedComponent, options = {}) {
 
   return WithErrorBoundaryWrapper;
 }
-
-// Auto-added named-export aliases (deploy reconciler)
-export { default as ErrorBoundary };
