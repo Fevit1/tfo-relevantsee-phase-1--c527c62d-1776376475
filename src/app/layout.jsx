@@ -2,7 +2,7 @@ import { Inter } from 'next/font/google'
 import '@/app/globals.css'
 import { AuthProvider } from '@/components/AuthProvider'
 import { ToastProvider } from '@/components/ui/Toast'
-import { ErrorBoundary } from '@/components/ui/ErrorBoundary'
+import ErrorBoundary from '@/components/ui/ErrorBoundary'
 
 const inter = Inter({ subsets: ['latin'] })
 
