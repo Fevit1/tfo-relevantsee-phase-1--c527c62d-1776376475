@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 3 7 18;
+    --foreground: 255 255 255;
+    --app-shell-gradient: linear-gradient(
+      135deg,
+      rgb(3 7 18) 0%,
+      rgb(7 11 26) 50%,
+      rgb(3 7 18) 100%
+    );
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+  }
+
+  /* ── Heading defaults ─────────────────────────────────────── */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: #f9fafb;
+  }
+
+  h1 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+  h2 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
+  h3 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); }
+  h4 { font-size: 1.125rem; }
+  h5 { font-size: 1rem; }
+  h6 { font-size: 0.875rem; }
+
+  /* ── Body / paragraph defaults ───────────────────────────── */
+  p {
+    color: #d1d5db;
+    line-height: 1.6;
+  }
+
+  small {
+    font-size: 0.8125rem;
+    color: #9ca3af;
+  }
+
+  /* ── Anchor defaults ─────────────────────────────────────── */
+  a {
+    color: #818cf8;
+    text-decoration: none;
+    transition: color 200ms ease, opacity 200ms ease;
+  }
+
+  a:hover {
+    color: #a5b4fc;
+    text-decoration: underline;
+  }
+
+  a:focus-visible {
+    outline: none;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0 2px #6366f1;
+    text-decoration: none;
+  }
+
+  /* ── Global focus-visible ring (applies to all interactive elements) */
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #6366f1;
+    border-radius: 0.25rem;
+  }
+
+  /* Buttons & inputs get a slightly larger ring for clarity */
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [role="button"]:focus-visible,
+  [tabindex]:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #6366f1, 0 0 0 4px rgba(99, 102, 241, 0.25);
+    border-radius: 0.375rem;
+  }
+
+  /* ── Interactive element transition defaults ─────────────── */
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  a,
+  label {
+    transition-property: color, background-color, border-color, box-shadow,
+      opacity, transform;
+    transition-duration: 150ms;
+    transition-timing-function: ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    button,
+    [role="button"],
+    input,
+    select,
+    textarea,
+    a,
+    label {
+      transition: none;
+    }
+  }
+
+  /* ── Custom scrollbar for dark theme ─────────────────────── */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0f1117;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #374151;
+    border-radius: 3px;
+    transition: background 200ms ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4b5563;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: #0f1117;
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #374151 #0f1117;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* App-shell gradient background */
+  .bg-app-shell {
+    background: var(--app-shell-gradient);
+  }
+
+  /* Subtle gradient overlay used on cards / panels */
+  .bg-gradient-surface {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  /* Focus ring utility for manual usage */
+  .focus-ring {
+    outline: none;
+    box-shadow: 0 0 0 2px #6366f1, 0 0 0 4px rgba(99, 102, 241, 0.25);
+  }
+
+  /* Reduced-motion safe transition helper */
+  .transition-safe {
+    transition-property: color, background-color, border-color, box-shadow,
+      opacity, transform;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .transition-safe {
+      transition: none;
+    }
+  }
+}
